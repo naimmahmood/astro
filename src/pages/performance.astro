@@ -1,0 +1,718 @@
+---
+// NSawit Swing Performance Page
+const pageTitle =
+    "Performance - NSawit Indicator for Crude Palm Oil Futures (FCPO)";
+const description =
+    "On TradingView platform, the NSawit Swing is configured to identify low-risk major reversal points with conservative risk management for safer trading decisions.";
+
+// Performance data for each year
+const performanceData = {
+    2022: {
+        summary:
+            "In 2022, NSawit Swing successfully identified 6 major reversal points in the FCPO market. These signals helped traders capture significant price movements while maintaining conservative risk management throughout the year's volatile market conditions.",
+        galleryImages: [
+            "/swingimages/1 FCPO Mac 2022.png",
+            "/swingimages/2 FCPO May 2022.png",
+            "/swingimages/3 FCPO Jul 2022.png",
+            "/swingimages/4 FCPO Sept 2022.png",
+            "/swingimages/5 FCPO Oct 2022.png",
+            "/swingimages/6 FCPO Dec 2022.png",
+        ],
+    },
+    2023: {
+        summary:
+            "Throughout 2023, NSawit Swing demonstrated exceptional performance by identifying 8 successful reversal points. This was the most productive year, allowing traders to capitalize on frequent trend changes and maximize trading opportunities across multiple market cycles.",
+        galleryImages: [
+            "/swingimages/7 FCPO Jan 2023.png",
+            "/swingimages/8 FCPO Apr 2023.png",
+            "/swingimages/9 FCPO May 2023.png",
+            "/swingimages/10 FCPO Jul 2023.png",
+            "/swingimages/11 FCPO Aug 2023.png",
+            "/swingimages/12 FCPO Oct 2023.png",
+            "/swingimages/13 FCPO Nov 2023.png",
+            "/swingimages/14 FCPO Dec 2023.png",
+        ],
+    },
+    2024: {
+        summary:
+            "NSawit Swing identified 5 successful reversal points in 2024. Despite fewer signals compared to previous years, each reversal point was highly accurate, reflecting the indicator's focus on quality over quantity and its ability to filter out false signals in changing market dynamics.",
+        galleryImages: [
+            "/swingimages/15 FCPO Feb 2024.png",
+            "/swingimages/16 FCPO Apr 2024.png",
+            "/swingimages/17 FCPO Jul 2024.png",
+            "/swingimages/18 FCPO Oct 2024.png",
+            "/swingimages/19 FCPO Nov 2024.png",
+        ],
+    },
+    2025: {
+        summary:
+            "In 2025, NSawit Swing continued its consistent performance by identifying 6 successful reversal points. The indicator maintained its reliability in detecting low-risk entry opportunities, proving its effectiveness across different market conditions and price action patterns.",
+        galleryImages: [
+            "/swingimages/20 FCPO Feb 2025.png",
+            "/swingimages/21 FCPO Apr 2025.png",
+            "/swingimages/22 FCPO May 2025.png",
+            "/swingimages/23 FCPO Jul 2025.png",
+            "/swingimages/24 FCPO Nov 2025.png",
+            "/swingimages/25 FCPO Oct 2025.png",
+        ],
+    },
+};
+
+const PHONE = "60194078410";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow, archive" />
+
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+
+        <title>{pageTitle}</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: #000;
+            }
+
+            /* Header */
+            .header {
+                background: #000;
+                padding: 20px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .logo {
+                max-width: 300px;
+                height: auto;
+            }
+
+            .site-title {
+                color: #fff;
+                font-size: 1.2em;
+                text-align: center;
+            }
+
+            /* Navigation */
+            .navigation {
+                background: #1a1a1a;
+                padding: 15px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: #333;
+            }
+
+            /* Referral Badge */
+            .referral-badge {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 15px 20px;
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+
+            .referral-badge.show {
+                display: block;
+            }
+
+            /* Main Content */
+            .main-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            /* Intro Banner */
+            .intro-banner {
+                background: white;
+                color: #333;
+                padding: 40px;
+                border-radius: 10px;
+                text-align: center;
+                margin-bottom: 40px;
+                box-shadow: 0 2px 20px rgba(102, 126, 234, 0.3);
+            }
+
+            .intro-banner p {
+                font-size: 1.2em;
+                line-height: 1.8;
+                margin-bottom: 15px;
+            }
+
+            .intro-banner strong {
+                color: #667eea;
+            }
+
+            /* Year Section */
+            .year-section {
+                background: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                margin-bottom: 40px;
+            }
+
+            .year-section h3 {
+                color: #667eea;
+                font-size: 2em;
+                margin-bottom: 30px;
+                padding-bottom: 15px;
+                border-bottom: 3px solid #667eea;
+            }
+
+            .performance-grid {
+                display: grid;
+                grid-template-columns: 40% 60%;
+                gap: 30px;
+                align-items: start;
+            }
+
+            .summary-section {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+            }
+
+            .summary-text {
+                font-size: 1.1em;
+                font-weight: 500;
+                color: #333;
+                text-align: justify;
+                line-height: 1.9;
+                padding: 35px;
+                background: linear-gradient(135deg, #f5f7ff 0%, #e8ecff 100%);
+                border-radius: 12px;
+                border-left: 5px solid #667eea;
+                box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+            }
+
+            /* Gallery */
+            .gallery-container {
+                position: relative;
+            }
+
+            .gallery-main {
+                width: 100%;
+                max-width: 600px;
+                aspect-ratio: 1;
+                border-radius: 8px;
+                overflow: hidden;
+                background: #000;
+                position: relative;
+            }
+
+            .gallery-main img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
+
+            .gallery-main img:hover {
+                transform: scale(1.02);
+            }
+
+            .gallery-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.3s;
+                z-index: 10;
+            }
+
+            .gallery-nav:hover {
+                background: rgba(0, 0, 0, 0.8);
+            }
+
+            .gallery-nav.prev {
+                left: 1rem;
+            }
+            .gallery-nav.next {
+                right: 1rem;
+            }
+
+            .gallery-thumbnails {
+                display: flex;
+                gap: 8px;
+                margin-top: 15px;
+                overflow-x: auto;
+                padding: 8px 0;
+            }
+
+            .gallery-thumbnails img {
+                width: 60px;
+                height: 60px;
+                object-fit: cover;
+                border-radius: 4px;
+                cursor: pointer;
+                opacity: 0.6;
+                transition:
+                    opacity 0.3s,
+                    transform 0.3s;
+                flex-shrink: 0;
+            }
+
+            .gallery-thumbnails img:hover,
+            .gallery-thumbnails img.active {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            .gallery-counter {
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                background: rgba(0, 0, 0, 0.7);
+                color: white;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            .footer {
+                background: #000;
+                color: #999;
+                padding: 30px 20px;
+                text-align: center;
+                margin-top: 60px;
+                border-top: 1px solid #333;
+            }
+
+            .footer a {
+                color: #667eea;
+                text-decoration: none;
+            }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+
+            .footer-links {
+                margin-bottom: 15px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+            }
+
+            /* Lightbox */
+            .lightbox {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+            }
+
+            .lightbox.active {
+                display: flex;
+            }
+
+            .lightbox img {
+                max-width: 90%;
+                max-height: 90vh;
+                border-radius: 8px;
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                color: white;
+                font-size: 2rem;
+                cursor: pointer;
+                background: rgba(0, 0, 0, 0.5);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .performance-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .intro-banner {
+                    padding: 25px;
+                }
+
+                .intro-banner p {
+                    font-size: 1em;
+                }
+
+                .year-section {
+                    padding: 25px;
+                }
+
+                .year-section h3 {
+                    font-size: 1.5em;
+                }
+
+                .summary-text {
+                    font-size: 1em;
+                    padding: 25px;
+                    text-align: left;
+                }
+
+                .gallery-nav {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.2rem;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .nav-menu {
+                    gap: 10px;
+                }
+
+                .nav-menu a {
+                    padding: 6px 12px;
+                    font-size: 0.9em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Referral Badge -->
+        <div id="referralBadge" class="referral-badge">
+            📢 Dirujuk oleh: <span id="referralName"></span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <img src="/No background.png" alt="NSawit" class="logo" />
+                <h1 class="site-title">
+                    Indicator for Crude Palm Oil Futures (FCPO)
+                </h1>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="/functionality">Functionality</a></li>
+                    <li>
+                        <a href="/performance" class="active">Performance</a>
+                    </li>
+                    <li><a href="/free-trial">Free Trial</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Intro Banner -->
+            <div class="intro-banner">
+                <p>
+                    On TradingView platform, the NSawit Swing identifies <strong
+                        >low-risk major reversal points</strong
+                    > for safer trading decisions.
+                </p>
+                <p>
+                    The yearly performance of NSawit Swing since 2022 is
+                    illustrated below. <strong style="color: rgb(244, 5, 5);"
+                        >Historical data does not guarantee future results.</strong
+                    >
+                </p>
+            </div>
+
+            {
+                Object.entries(performanceData).map(([year, data]) => (
+                    <div class="year-section">
+                        <h3>Year {year}</h3>
+                        <div class="performance-grid">
+                            <div class="summary-section">
+                                <p class="summary-text">{data.summary}</p>
+                            </div>
+                            <div class="gallery-container" data-gallery={year}>
+                                <div class="gallery-main">
+                                    <img
+                                        src={data.galleryImages[0]}
+                                        alt={`${year} Month 1`}
+                                        data-lightbox={data.galleryImages[0]}
+                                    />
+                                    <button
+                                        class="gallery-nav prev"
+                                        data-year={year}
+                                        data-dir="-1"
+                                    >
+                                        ‹
+                                    </button>
+                                    <button
+                                        class="gallery-nav next"
+                                        data-year={year}
+                                        data-dir="1"
+                                    >
+                                        ›
+                                    </button>
+                                    <div class="gallery-counter">
+                                        <span class="current">1</span> /{" "}
+                                        <span class="total">
+                                            {data.galleryImages.length}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="gallery-thumbnails">
+                                    {data.galleryImages.map((img, idx) => (
+                                        <img
+                                            src={img}
+                                            alt={`Thumbnail ${idx + 1}`}
+                                            class={idx === 0 ? "active" : ""}
+                                            data-year={year}
+                                            data-index={idx}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/about">About</a> |
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/sitemap">Sitemap</a>
+            </div>
+            <p>&copy; 2024 NSawit. All rights reserved.</p>
+        </footer>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-close" onclick="closeLightbox()">×</div>
+            <img id="lightbox-image" src="" alt="" />
+        </div>
+
+        <script define:vars={{ performanceData, PHONE }}>
+            // Gallery management
+            const galleries = {};
+
+            Object.keys(performanceData).forEach((year) => {
+                galleries[year] = {
+                    currentIndex: 0,
+                    images: performanceData[year].galleryImages,
+                };
+            });
+
+            function changeSlide(year, direction) {
+                const gallery = galleries[year];
+                gallery.currentIndex =
+                    (gallery.currentIndex + direction + gallery.images.length) %
+                    gallery.images.length;
+                updateGallery(year);
+            }
+
+            function goToSlide(year, index) {
+                galleries[year].currentIndex = index;
+                updateGallery(year);
+            }
+
+            function updateGallery(year) {
+                const gallery = galleries[year];
+                const container = document.querySelector(
+                    `[data-gallery="${year}"]`,
+                );
+                if (!container) return;
+
+                const mainImg = container.querySelector(".gallery-main img");
+                const counter = container.querySelector(
+                    ".gallery-counter .current",
+                );
+                const thumbnails = container.querySelectorAll(
+                    ".gallery-thumbnails img",
+                );
+
+                mainImg.src = gallery.images[gallery.currentIndex];
+                mainImg.dataset.lightbox = gallery.images[gallery.currentIndex];
+                counter.textContent = gallery.currentIndex + 1;
+
+                thumbnails.forEach((thumb, idx) => {
+                    thumb.classList.toggle(
+                        "active",
+                        idx === gallery.currentIndex,
+                    );
+                });
+            }
+
+            // Setup gallery navigation buttons
+            document.querySelectorAll(".gallery-nav").forEach((btn) => {
+                btn.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const year = this.dataset.year;
+                    const direction = parseInt(this.dataset.dir);
+                    changeSlide(year, direction);
+                });
+            });
+
+            // Setup thumbnail clicks
+            document
+                .querySelectorAll(".gallery-thumbnails img")
+                .forEach((thumb) => {
+                    thumb.addEventListener("click", function () {
+                        const year = this.dataset.year;
+                        const index = parseInt(this.dataset.index);
+                        goToSlide(year, index);
+                    });
+                });
+
+            // Lightbox
+            document.querySelectorAll(".gallery-main img").forEach((img) => {
+                img.addEventListener("click", function () {
+                    const lightbox = document.getElementById("lightbox");
+                    const lightboxImg =
+                        document.getElementById("lightbox-image");
+                    lightboxImg.src = this.dataset.lightbox;
+                    lightbox.classList.add("active");
+                });
+            });
+
+            function closeLightbox() {
+                document.getElementById("lightbox").classList.remove("active");
+            }
+
+            document
+                .getElementById("lightbox")
+                .addEventListener("click", function (e) {
+                    if (e.target === this) {
+                        closeLightbox();
+                    }
+                });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") closeLightbox();
+            });
+
+            // Affiliate tracking system
+            function getRefCode() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("ref");
+            }
+
+            function storeRefCode(ref) {
+                if (ref) {
+                    sessionStorage.setItem("affiliateRef", ref);
+                }
+            }
+
+            function getStoredRef() {
+                return sessionStorage.getItem("affiliateRef") || getRefCode();
+            }
+
+            // Initialize on page load
+            const refCode = getRefCode();
+            if (refCode) {
+                storeRefCode(refCode);
+
+                const badge = document.getElementById("referralBadge");
+                const refName = document.getElementById("referralName");
+                badge.classList.add("show");
+                refName.textContent = refCode.toUpperCase();
+            }
+
+            // Setup WhatsApp button
+            const whatsappBtn = document.getElementById("whatsappBtn");
+            whatsappBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const storedRef = getStoredRef();
+                let message = "Saya berminat dengan NSawit FCPO indicator";
+
+                if (storedRef) {
+                    message += ` (${storedRef.toUpperCase()})`;
+                }
+
+                const waLink = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+                window.open(waLink, "_blank");
+            });
+        </script>
+    </body>
+</html>

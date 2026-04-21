@@ -1,0 +1,549 @@
+---
+// NSawit Free Trial Page
+const pageTitle =
+    "Free Trial - NSawit Indicator for Crude Palm Oil Futures (FCPO)";
+const description =
+    "Take your trading to the next level with the NSawit Swing Indicator, now available for a free trial! This trial version provides access to historical trading results, giving you a chance to explore the indicator's impressive performance over time.";
+
+const PHONE = "60194078410";
+
+// Step-by-step guide data
+const steps = [
+    {
+        number: 1,
+        title: "Step 1",
+        content:
+            "Log on your TradingView account. Click the link below to save past months contract.",
+        link: "https://www.tradingview.com/watchlists/143556466/",
+        linkText: "FCPO watchlist since Mar 2022",
+        additionalText: "Click the watchlist icon to view your new watchlist",
+        images: [
+            //"https://image.jimcdn.com/app/cms/image/transf/dimension=600x10000:format=png/path/s9d2598e95ac6213e/image/i0d2e20fbe85021e6/version/1722698298/image.png",
+            "/images/watchlist.png",
+            "https://image.jimcdn.com/app/cms/image/transf/dimension=575x10000:format=png/path/s9d2598e95ac6213e/image/i355ceac2735cd867/version/1722825499/image.png",
+        ],
+    },
+    {
+        number: 2,
+        title: "Step 2",
+        content:
+            "In your TradingView platform, click the 'Indicators'. A menu will pop out and in the search field, type \"NSawit - Swing\". Click on the star icon to add NSawit Swing to your favourite list. Click the result to add the indicator to your graph.",
+        images: [
+            "https://image.jimcdn.com/app/cms/image/transf/dimension=673x10000:format=png/path/s9d2598e95ac6213e/image/i27595ad5e6c3a6a8/version/1722697367/image.png",
+        ],
+    },
+    {
+        number: 3,
+        title: "Step 3",
+        content:
+            "Use your keyboard arrow (Up/Down) key to browse the contract months.",
+        images: [
+            "https://image.jimcdn.com/app/cms/image/transf/dimension=673x10000:format=png/path/s9d2598e95ac6213e/image/ia9bf8bca2661a032/version/1722698236/image.png",
+        ],
+    },
+];
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow, archive" />
+
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+
+        <title>{pageTitle}</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: #000;
+            }
+
+            /* Header */
+            .header {
+                background: #000;
+                padding: 20px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .logo {
+                max-width: 300px;
+                height: auto;
+            }
+
+            .site-title {
+                color: #fff;
+                font-size: 1.2em;
+                text-align: center;
+            }
+
+            /* Navigation */
+            .navigation {
+                background: #1a1a1a;
+                padding: 15px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: #333;
+            }
+
+            /* Referral Badge */
+            .referral-badge {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 15px 20px;
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+
+            .referral-badge.show {
+                display: block;
+            }
+
+            /* Main Content */
+            .main-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            /* Intro Section */
+            .intro-section {
+                background: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                margin-bottom: 40px;
+            }
+
+            .intro-section p {
+                font-size: 1.1em;
+                text-align: justify;
+                line-height: 1.8;
+                margin-bottom: 15px;
+            }
+
+            .intro-section strong {
+                color: #667eea;
+            }
+
+            /* Section Title */
+            .section-title {
+                background: #fff;
+                padding: 20px 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                margin-bottom: 30px;
+            }
+
+            .section-title h2 {
+                color: #667eea;
+                font-size: 1.8em;
+                margin: 0;
+            }
+
+            /* Step Section */
+            .step-section {
+                background: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                margin-bottom: 30px;
+            }
+
+            .step-grid {
+                display: grid;
+                grid-template-columns: 65% 33%;
+                gap: 30px;
+                align-items: start;
+            }
+
+            .step-images img {
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                cursor: pointer;
+                transition: transform 0.3s;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .step-images img:hover {
+                transform: scale(1.02);
+            }
+
+            .step-content h3 {
+                color: #667eea;
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            .step-content p,
+            .step-content ul {
+                font-size: 1.05em;
+                line-height: 1.8;
+            }
+
+            .step-content ul {
+                padding-left: 20px;
+            }
+
+            .step-content li {
+                margin-bottom: 15px;
+            }
+
+            .step-content a {
+                color: #667eea;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .step-content a:hover {
+                text-decoration: underline;
+            }
+
+            /* Footer */
+            .footer {
+                background: #000;
+                color: #999;
+                padding: 30px 20px;
+                text-align: center;
+                margin-top: 60px;
+                border-top: 1px solid #333;
+            }
+
+            .footer a {
+                color: #667eea;
+                text-decoration: none;
+            }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+
+            .footer-links {
+                margin-bottom: 15px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+            }
+
+            /* Lightbox */
+            .lightbox {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.95);
+                z-index: 1000;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+            }
+
+            .lightbox.active {
+                display: flex;
+            }
+
+            .lightbox img {
+                max-width: 90%;
+                max-height: 90vh;
+                border-radius: 8px;
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                color: white;
+                font-size: 2rem;
+                cursor: pointer;
+                background: rgba(0, 0, 0, 0.5);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .step-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .intro-section,
+                .step-section,
+                .cta-section {
+                    padding: 25px;
+                }
+
+                .section-title {
+                    padding: 15px 25px;
+                }
+
+                .section-title h2 {
+                    font-size: 1.4em;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .nav-menu {
+                    gap: 10px;
+                }
+
+                .nav-menu a {
+                    padding: 6px 12px;
+                    font-size: 0.9em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Referral Badge -->
+        <div id="referralBadge" class="referral-badge">
+            📢 Dirujuk oleh: <span id="referralName"></span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <img src="/No background.png" alt="NSawit" class="logo" />
+                <h1 class="site-title">
+                    Indicator for Crude Palm Oil Futures (FCPO)
+                </h1>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="/functionality">Functionality</a></li>
+                    <li><a href="/performance">Performance</a></li>
+                    <li><a href="/free-trial" class="active">Free Trial</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Intro Section -->
+            <div class="intro-section">
+                <p>
+                    Take your trading to the next level with the NSawit Swing
+                    Indicator, now available for a <strong>free trial</strong>!
+                    This trial version provides access to historical trading
+                    results, giving you a chance to explore the indicator's
+                    impressive performance over time. While the current month's
+                    data is not included, you'll have all the insights you need
+                    to assess its effectiveness and make informed decisions in
+                    your trading strategy.
+                </p>
+                <p>
+                    Before trying the NSawit Swing Indicator, ensure you're
+                    subscribed to TradingView.
+                </p>
+            </div>
+
+            <!-- Section Title -->
+            <div class="section-title">
+                <h2>Step by step guide for Free Trial version</h2>
+            </div>
+
+            <!-- Steps -->
+            {
+                steps.map((step) => (
+                    <div class="step-section">
+                        <div class="step-grid">
+                            <div class="step-images">
+                                {step.images.map((img) => (
+                                    <img
+                                        src={img}
+                                        alt={`${step.title} screenshot`}
+                                        data-lightbox={img}
+                                    />
+                                ))}
+                            </div>
+                            <div class="step-content">
+                                <h3>{step.title}</h3>
+                                <ul>
+                                    <li>
+                                        <strong>{step.content}</strong>
+                                        {step.link && (
+                                            <>
+                                                {" "}
+                                                <a
+                                                    href={step.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    {step.linkText}
+                                                </a>
+                                            </>
+                                        )}
+                                    </li>
+                                    {step.additionalText && (
+                                        <li style="margin-top: 60px;">
+                                            <strong>
+                                                {step.additionalText}
+                                            </strong>
+                                        </li>
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/about">About</a> |
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/sitemap">Sitemap</a>
+            </div>
+            <p>&copy; 2024 NSawit. All rights reserved.</p>
+        </footer>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-close" onclick="closeLightbox()">×</div>
+            <img id="lightbox-image" src="" alt="" />
+        </div>
+
+        <script define:vars={{ PHONE }}>
+            // Lightbox functionality
+            document.querySelectorAll("[data-lightbox]").forEach((img) => {
+                img.addEventListener("click", function () {
+                    const lightbox = document.getElementById("lightbox");
+                    const lightboxImg =
+                        document.getElementById("lightbox-image");
+                    lightboxImg.src = this.dataset.lightbox;
+                    lightbox.classList.add("active");
+                });
+            });
+
+            function closeLightbox() {
+                document.getElementById("lightbox").classList.remove("active");
+            }
+
+            document
+                .getElementById("lightbox")
+                .addEventListener("click", function (e) {
+                    if (e.target === this) {
+                        closeLightbox();
+                    }
+                });
+
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") closeLightbox();
+            });
+
+            // Affiliate tracking system
+            function getRefCode() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("ref");
+            }
+
+            function storeRefCode(ref) {
+                if (ref) {
+                    sessionStorage.setItem("affiliateRef", ref);
+                }
+            }
+
+            function getStoredRef() {
+                return sessionStorage.getItem("affiliateRef") || getRefCode();
+            }
+
+            // Initialize on page load
+            const refCode = getRefCode();
+            if (refCode) {
+                storeRefCode(refCode);
+
+                const badge = document.getElementById("referralBadge");
+                const refName = document.getElementById("referralName");
+                badge.classList.add("show");
+                refName.textContent = refCode.toUpperCase();
+            }
+
+            // Setup WhatsApp button
+            const whatsappBtn = document.getElementById("whatsappBtn");
+            whatsappBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const storedRef = getStoredRef();
+                let message = "Saya berminat dengan NSawit FCPO indicator";
+
+                if (storedRef) {
+                    message += ` (${storedRef.toUpperCase()})`;
+                }
+
+                const waLink = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+                window.open(waLink, "_blank");
+            });
+        </script>
+    </body>
+</html>

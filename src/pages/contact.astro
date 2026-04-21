@@ -1,0 +1,484 @@
+---
+// NSawit Contact Page
+const pageTitle =
+    "Contact - NSawit Indicator for Crude Palm Oil Futures (FCPO)";
+const description =
+    "Get in touch with NSawit via WhatsApp or follow us on Facebook.";
+
+const PHONE = "60194078410";
+const FACEBOOK_PAGE = "https://facebook.com/NSawit";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta name="robots" content="index, follow, archive" />
+
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={description} />
+
+        <title>{pageTitle}</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: #000;
+            }
+
+            /* Header */
+            .header {
+                background: #000;
+                padding: 20px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .logo {
+                max-width: 300px;
+                height: auto;
+            }
+
+            .site-title {
+                color: #fff;
+                font-size: 1.2em;
+                text-align: center;
+            }
+
+            /* Navigation */
+            .navigation {
+                background: #1a1a1a;
+                padding: 15px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: #333;
+            }
+
+            /* Referral Badge */
+            .referral-badge {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 15px 20px;
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+
+            .referral-badge.show {
+                display: block;
+            }
+
+            /* Main Content */
+            .main-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            /* Contact Section */
+            .contact-section {
+                background: #fff;
+                padding: 60px 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            .contact-section h1 {
+                color: #667eea;
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+
+            .whatsapp-button {
+                display: inline-block;
+                background: #25d366;
+                color: white;
+                text-decoration: none;
+                padding: 20px 50px;
+                border-radius: 50px;
+                font-size: 1.3em;
+                font-weight: bold;
+                margin-bottom: 50px;
+                transition:
+                    transform 0.3s,
+                    background 0.3s,
+                    box-shadow 0.3s;
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            }
+
+            .whatsapp-button:hover {
+                transform: translateY(-3px);
+                background: #20bd5a;
+                box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            }
+
+            .whatsapp-button::before {
+                content: "💬 ";
+                font-size: 1.2em;
+            }
+
+            /* Facebook Section */
+            .facebook-section {
+                margin-top: 50px;
+                padding-top: 50px;
+                border-top: 2px solid #eee;
+            }
+
+            .facebook-embed {
+                max-width: 890px;
+                margin: 0 auto;
+                background: #f5f5f5;
+                padding: 30px;
+                border-radius: 10px;
+                min-height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .facebook-placeholder {
+                text-align: center;
+            }
+
+            .facebook-placeholder h3 {
+                color: #667eea;
+                margin-bottom: 20px;
+                font-size: 1.5em;
+            }
+
+            .facebook-link {
+                display: inline-block;
+                background: #1877f2;
+                color: white;
+                text-decoration: none;
+                padding: 15px 40px;
+                border-radius: 5px;
+                font-weight: bold;
+                transition:
+                    transform 0.2s,
+                    background 0.3s;
+            }
+
+            .facebook-link:hover {
+                transform: translateY(-2px);
+                background: #166fe5;
+            }
+
+            .facebook-link::before {
+                content: "f ";
+                font-weight: bold;
+                margin-right: 5px;
+            }
+
+            /* Sidebar */
+            .sidebar {
+                background: #fff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .sidebar h3 {
+                color: #667eea;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .cta-button {
+                display: block;
+                background: #25d366;
+                color: white;
+                text-decoration: none;
+                padding: 15px 25px;
+                border-radius: 5px;
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 15px;
+                transition:
+                    transform 0.2s,
+                    background 0.3s;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                background: #20bd5a;
+            }
+
+            .cta-button.secondary {
+                background: #667eea;
+            }
+
+            .cta-button.secondary:hover {
+                background: #5568d3;
+            }
+
+            .social-share {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 30px;
+            }
+
+            .social-share a {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                transition: transform 0.2s;
+            }
+
+            .social-share a:hover {
+                transform: scale(1.1);
+            }
+
+            .social-facebook {
+                background: #1877f2;
+            }
+
+            .social-twitter {
+                background: #000;
+            }
+
+            /* Footer */
+            .footer {
+                background: #000;
+                color: #999;
+                padding: 30px 20px;
+                text-align: center;
+                margin-top: 60px;
+                border-top: 1px solid #333;
+            }
+
+            .footer a {
+                color: #667eea;
+                text-decoration: none;
+            }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+
+            .footer-links {
+                margin-bottom: 15px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                .contact-section {
+                    padding: 40px 25px;
+                }
+
+                .contact-section h1 {
+                    font-size: 2em;
+                }
+
+                .whatsapp-button {
+                    padding: 15px 35px;
+                    font-size: 1.1em;
+                }
+
+                .facebook-embed {
+                    padding: 20px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .nav-menu {
+                    gap: 10px;
+                }
+
+                .nav-menu a {
+                    padding: 6px 12px;
+                    font-size: 0.9em;
+                }
+
+                .contact-section h1 {
+                    font-size: 1.6em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Referral Badge -->
+        <div id="referralBadge" class="referral-badge">
+            📢 Dirujuk oleh: <span id="referralName"></span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <img src="/No background.png" alt="NSawit" class="logo" />
+                <h1 class="site-title">
+                    Indicator for Crude Palm Oil Futures (FCPO)
+                </h1>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="/">Overview</a></li>
+                    <li><a href="/functionality">Functionality</a></li>
+                    <li><a href="/performance">Performance</a></li>
+                    <li><a href="/free-trial">Free Trial</a></li>
+                    <li><a href="/contact" class="active">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3>Let's Start Learning</h3>
+
+                <a href="#" id="whatsappBtn" class="cta-button">
+                    💬 WhatsApp Now
+                </a>
+
+                <a
+                    href="https://www.tradingview.com/script/J5F1sZLx-FCPO-NSawit-Swing-Strategy/"
+                    target="_blank"
+                    class="cta-button secondary"
+                >
+                    📊 View on TradingView
+                </a>
+
+                <div class="social-share">
+                    <a
+                        href="http://www.facebook.com/sharer.php?u=https://nsawit.com"
+                        target="_blank"
+                        class="social-facebook"
+                        title="Share on Facebook">f</a
+                    >
+                    <a
+                        href="https://x.com/share?text=NSawit%20FCPO%20Indicator&url=https://nsawit.com"
+                        target="_blank"
+                        class="social-twitter"
+                        title="Share on X">𝕏</a
+                    >
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/about">About</a> |
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/sitemap">Sitemap</a>
+            </div>
+            <p>&copy; 2024 NSawit. All rights reserved.</p>
+        </footer>
+
+        <script define:vars={{ PHONE }}>
+            // Affiliate tracking system
+            function getRefCode() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("ref");
+            }
+
+            function storeRefCode(ref) {
+                if (ref) {
+                    sessionStorage.setItem("affiliateRef", ref);
+                }
+            }
+
+            function getStoredRef() {
+                return sessionStorage.getItem("affiliateRef") || getRefCode();
+            }
+
+            // Initialize on page load
+            const refCode = getRefCode();
+            if (refCode) {
+                storeRefCode(refCode);
+
+                const badge = document.getElementById("referralBadge");
+                const refName = document.getElementById("referralName");
+                badge.classList.add("show");
+                refName.textContent = refCode.toUpperCase();
+            }
+
+            // Setup WhatsApp button
+            const whatsappBtn = document.getElementById("whatsappBtn");
+            whatsappBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const storedRef = getStoredRef();
+                let message = "Saya berminat dengan NSawit FCPO indicator";
+
+                if (storedRef) {
+                    message += ` (${storedRef.toUpperCase()})`;
+                }
+
+                const waLink = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+                window.open(waLink, "_blank");
+            });
+        </script>
+    </body>
+</html>

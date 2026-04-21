@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Reliable Analysis: Our reversal zones come with zero repainting, ensuring accuracy and consistency. End-of-Day Confirmation: Reversal zones are confirmed at market close."
+        />
+        <meta name="robots" content="index, follow, archive" />
+
+        <!-- Open Graph / Social Media -->
+        <meta
+            property="og:title"
+            content="NSawit Swing Key Features - FCPO Indicator"
+        />
+        <meta
+            property="og:description"
+            content="Reliable Analysis: Our reversal zones come with zero repainting, ensuring accuracy and consistency."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="NSawit Swing Key Features - FCPO Indicator"
+        />
+        <meta
+            name="twitter:description"
+            content="Reliable Analysis: Our reversal zones come with zero repainting, ensuring accuracy and consistency."
+        />
+
+        <title>NSawit Swing Key Features - FCPO Indicator</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: #000;
+            }
+
+            /* Header */
+            .header {
+                background: #000;
+                padding: 20px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .logo {
+                max-width: 300px;
+                height: auto;
+            }
+
+            .site-title {
+                color: #fff;
+                font-size: 1.2em;
+                text-align: center;
+            }
+
+            /* Navigation */
+            .navigation {
+                background: #1a1a1a;
+                padding: 15px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: #333;
+            }
+
+            /* Referral Badge */
+            .referral-badge {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 15px 20px;
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+
+            .referral-badge.show {
+                display: block;
+            }
+
+            /* Main Content */
+            .main-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            .content-area {
+                background: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                margin-bottom: 40px;
+            }
+
+            /* Feature Grid */
+            .feature-grid {
+                display: grid;
+                grid-template-columns: 35% 1fr;
+                gap: 30px;
+                margin-bottom: 50px;
+                align-items: start;
+            }
+
+            .feature-image {
+                width: 100%;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
+
+            .feature-image:hover {
+                transform: scale(1.02);
+            }
+
+            .feature-content h2 {
+                color: #667eea;
+                margin-bottom: 20px;
+                font-size: 1.8em;
+            }
+
+            .feature-content ol {
+                padding-left: 25px;
+            }
+
+            .feature-content li {
+                margin-bottom: 15px;
+                font-size: 1.1em;
+                line-height: 1.7;
+            }
+
+            .feature-content strong {
+                color: #667eea;
+            }
+
+            .spacer {
+                height: 50px;
+            }
+
+            /* Footer */
+            .footer {
+                background: #000;
+                color: #999;
+                padding: 30px 20px;
+                text-align: center;
+                margin-top: 60px;
+                border-top: 1px solid #333;
+            }
+
+            .footer a {
+                color: #667eea;
+                text-decoration: none;
+            }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+
+            .footer-links {
+                margin-bottom: 15px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+            }
+
+            /* Lightbox */
+            .lightbox {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .lightbox.active {
+                display: flex;
+            }
+
+            .lightbox img {
+                max-width: 90%;
+                max-height: 90%;
+                border-radius: 8px;
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: 20px;
+                right: 40px;
+                color: white;
+                font-size: 40px;
+                cursor: pointer;
+                background: none;
+                border: none;
+            }
+
+            /* Responsive */
+            @media (max-width: 900px) {
+                .feature-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .nav-menu {
+                    gap: 15px;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .content-area {
+                    padding: 20px;
+                }
+
+                .feature-content h2 {
+                    font-size: 1.4em;
+                }
+
+                .feature-content li {
+                    font-size: 1em;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Referral Badge -->
+        <div id="referralBadge" class="referral-badge">
+            📢 Dirujuk oleh: <span id="referralName"></span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <img src="/No background.png" alt="NSawit" class="logo" />
+                <h1 class="site-title">
+                    Indicator for Crude Palm Oil Futures (FCPO)
+                </h1>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="/">Overview</a></li>
+                    <li>
+                        <a href="/functionality" class="active">Functionality</a
+                        >
+                    </li>
+                    <li><a href="/performance">Performance</a></li>
+                    <li><a href="/free-trial">Free Trial</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-area">
+                <!-- Feature Grid 1 -->
+                <div class="feature-grid">
+                    <div>
+                        <img
+                            src="/signal picture.png"
+                            alt="NSawit Key Features"
+                            class="feature-image"
+                            onclick="openLightbox(this.src)"
+                        />
+                    </div>
+                    <div class="feature-content">
+                        <h2>NSawit Swing Key Features</h2>
+                        <ol>
+                            <li>
+                                <strong>Reliable Analysis:</strong> Our reversal zones
+                                come with zero repainting, ensuring accuracy and consistency.
+                            </li>
+                            <li>
+                                <strong>End-of-Day Confirmation:</strong> Reversal
+                                zones are confirmed at market close, eliminating the
+                                need for constant monitoring.
+                            </li>
+                            <li>
+                                <strong>Next-Session Decision:</strong> All evaluations
+                                are made during the following trading session, providing
+                                clear timing.
+                            </li>
+                            <li>
+                                <strong>Precise Reversal Zone:</strong> The reversal
+                                zone is clearly defined, offering clarity and confidence
+                                in trade planning.
+                            </li>
+                            <li>
+                                <strong>Controlled Risk:</strong> Smaller reversal
+                                zones help maintain manageable risk.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="spacer"></div>
+
+                <!-- Feature Grid 2 -->
+                <div class="feature-grid">
+                    <div>
+                        <img
+                            src="/Anatomy.png"
+                            alt="Anatomy of NSawit Swing"
+                            class="feature-image"
+                            onclick="openLightbox(this.src)"
+                        />
+                    </div>
+                    <div class="feature-content">
+                        <h2>Anatomy of NSawit Swing</h2>
+                        <ol>
+                            <li>
+                                <strong>Background Highlights:</strong> Differentiates
+                                the 2 weeks leading up to the active month and the
+                                4 weeks during the active month.
+                            </li>
+                            <li>
+                                <strong>MPOB Report Day Highlighting:</strong> Special
+                                background highlights indicate the MPOB report days
+                                for easy reference.
+                            </li>
+                            <li>
+                                <strong>Clear Reversal Zone:</strong> A distinct box
+                                marks the reversal zone, ensuring clarity in trading
+                                decisions.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <button class="lightbox-close" onclick="closeLightbox()"
+                >&times;</button
+            >
+            <img id="lightboxImg" src="" alt="Enlarged view" />
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/about">About</a> |
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/sitemap">Sitemap</a>
+            </div>
+            <p>&copy; 2024 NSawit. All rights reserved.</p>
+        </footer>
+
+        <script>
+            // Affiliate tracking system
+            const PHONE = "60194078410";
+
+            function getRefCode() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("ref");
+            }
+
+            function storeRefCode(ref) {
+                if (ref) {
+                    sessionStorage.setItem("affiliateRef", ref);
+                }
+            }
+
+            function getStoredRef() {
+                return sessionStorage.getItem("affiliateRef") || getRefCode();
+            }
+
+            // Initialize on page load
+            const refCode = getRefCode();
+            if (refCode) {
+                storeRefCode(refCode);
+
+                const badge = document.getElementById("referralBadge");
+                const refName = document.getElementById("referralName");
+                badge.classList.add("show");
+                refName.textContent = refCode.toUpperCase();
+            }
+
+            // Lightbox functions
+            function openLightbox(src) {
+                const lightbox = document.getElementById("lightbox");
+                const lightboxImg = document.getElementById("lightboxImg");
+                lightboxImg.src = src;
+                lightbox.classList.add("active");
+            }
+
+            function closeLightbox() {
+                const lightbox = document.getElementById("lightbox");
+                lightbox.classList.remove("active");
+            }
+
+            // Close lightbox on ESC key
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                    closeLightbox();
+                }
+            });
+        </script>
+    </body>
+</html>

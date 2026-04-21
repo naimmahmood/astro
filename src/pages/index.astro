@@ -1,51 +1,387 @@
----
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
----
-
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h4>Indicator for Crude Palm Oil Futures (FCPO)</h4>
-			<p>NSawit Swing : It’s Your Edge in a Volatile Market.</p>
-			<p>
-				Unlike typical indicators, Nsawit Swing is meticulously
-				engineered to navigate the unpredictable nature of the market,
-				particularly the FCPO market, where volatility is the norm. This
-				tool isn’t just about following trends; it’s about identifying
-				the critical reversal points that can make or break a trade.
-				Nsawit Swing empowers traders to enter positions earlier, with
-				reduced risk, by leveraging its cutting-edge algorithm designed
-				to excel in challenging market conditions.
-			</p>
-			<p>
-				What sets Nsawit Swing apart from traditional indicators like
-				MACD or Moving Averages is its foundation in a highly
-				sophisticated pattern-matching algorithm. This algorithm is the
-				result of extensive research and development, focused on
-				detecting the subtle clues and patterns that signal potential
-				reversals before they occur. The precision of Nsawit Swing’s
-				signals isn’t just theoretical—it’s a practical advantage that
-				traders can rely on to enhance their decision-making process.
-			</p>
-			<p>
-				Nsawit Swing is more than just a tool; it’s a strategic asset
-				for traders who understand that success in volatile markets
-				requires more than just following the crowd. It offers a unique
-				approach that combines advanced technology with market insights,
-				providing traders with the confidence to act decisively and
-				capitalize on opportunities that others might miss.With Nsawit
-				Swing, you’re not just trading—you’re trading smarter, earlier,
-				and with greater precision.
-			</p>
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="NSawit Swing: It's Your Edge in a Volatile Market."
+        />
+        <meta name="robots" content="index, follow, archive" />
+
+        <!-- Open Graph / Social Media -->
+        <meta
+            property="og:title"
+            content="NSawit - Indicator for Crude Palm Oil Futures (FCPO)"
+        />
+        <meta
+            property="og:description"
+            content="NSawit Swing: It's Your Edge in a Volatile Market."
+        />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="NSawit - Indicator for Crude Palm Oil Futures (FCPO)"
+        />
+        <meta
+            name="twitter:description"
+            content="NSawit Swing: It's Your Edge in a Volatile Market."
+        />
+
+        <title>NSawit - Indicator for Crude Palm Oil Futures (FCPO)</title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    sans-serif;
+                line-height: 1.6;
+                color: #333;
+                background: #000;
+            }
+
+            /* Header */
+            .header {
+                background: #000;
+                padding: 20px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .header-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .logo {
+                max-width: 300px;
+                height: auto;
+            }
+
+            .site-title {
+                color: #fff;
+                font-size: 1.2em;
+                text-align: center;
+            }
+
+            /* Navigation */
+            .navigation {
+                background: #1a1a1a;
+                padding: 15px 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .nav-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .nav-menu {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+            }
+
+            .nav-menu a {
+                color: #fff;
+                text-decoration: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                transition: background 0.3s;
+            }
+
+            .nav-menu a:hover,
+            .nav-menu a.active {
+                background: #333;
+            }
+
+            /* Referral Badge */
+            .referral-badge {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 15px 20px;
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+
+            .referral-badge.show {
+                display: block;
+            }
+
+            /* Main Content */
+            .main-content {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 40px 20px;
+            }
+
+            .content-area {
+                background: #fff;
+                padding: 40px;
+                border-radius: 10px;
+                box-shadow: 0 2px 20px rgba(255, 255, 255, 0.1);
+                margin-bottom: 40px;
+            }
+
+            .hero-title {
+                font-size: 1.8em;
+                color: #667eea;
+                margin-bottom: 30px;
+            }
+
+            .content-text {
+                font-size: 1.1em;
+                line-height: 1.8;
+                margin-bottom: 20px;
+                text-align: justify;
+            }
+
+            /* Warning Box */
+            .warning-box {
+                background: #fff3cd;
+                border-left: 4px solid #ff9800;
+                padding: 20px;
+                margin: 30px 0;
+                border-radius: 4px;
+                box-shadow: 0 2px 8px rgba(255, 152, 0, 0.2);
+            }
+
+            .warning-box::before {
+                content: "⚠️ ";
+                font-size: 1.3em;
+                margin-right: 8px;
+            }
+
+            .warning-text {
+                color: #856404;
+                font-weight: 600;
+                font-size: 1.05em;
+                line-height: 1.6;
+                margin: 0;
+            }
+
+            /* Footer */
+            .footer {
+                background: #000;
+                color: #999;
+                padding: 30px 20px;
+                text-align: center;
+                margin-top: 60px;
+                border-top: 1px solid #333;
+            }
+
+            .footer a {
+                color: #667eea;
+                text-decoration: none;
+            }
+
+            .footer a:hover {
+                text-decoration: underline;
+            }
+
+            .footer-links {
+                margin-bottom: 15px;
+            }
+
+            .footer-links a {
+                margin: 0 10px;
+            }
+
+            /* Responsive */
+            @media (max-width: 600px) {
+                .content-area {
+                    padding: 20px;
+                }
+
+                .hero-title {
+                    font-size: 1.4em;
+                }
+
+                .content-text {
+                    font-size: 1em;
+                }
+
+                .warning-box {
+                    padding: 15px;
+                }
+            }
+        </style>
+
+        <!-- Meta Pixel Code -->
+        <script is:raw>
+            !(function (f, b, e, v, n, t, s) {
+                if (f.fbq) return;
+                n = f.fbq = function () {
+                    n.callMethod
+                        ? n.callMethod.apply(n, arguments)
+                        : n.queue.push(arguments);
+                };
+                if (!f._fbq) f._fbq = n;
+                n.push = n;
+                n.loaded = !0;
+                n.version = "2.0";
+                n.queue = [];
+                t = b.createElement(e);
+                t.async = !0;
+                t.src = v;
+                s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s);
+            })(
+                window,
+                document,
+                "script",
+                "https://connect.facebook.net/en_US/fbevents.js",
+            );
+            fbq("init", "1723161222178222");
+            fbq("track", "PageView");
+        </script>
+        <noscript
+            ><img
+                height="1"
+                width="1"
+                style="display:none"
+                src="https://www.facebook.com/tr?id=1723161222178222&ev=PageView&noscript=1"
+            /></noscript
+        >
+        <!-- End Meta Pixel Code -->
+    </head>
+    <body>
+        <!-- Referral Badge -->
+        <div id="referralBadge" class="referral-badge">
+            📢 Dirujuk oleh: <span id="referralName"></span>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-container">
+                <img src="/No background.png" alt="NSawit" class="logo" />
+                <h1 class="site-title">
+                    Indicator for Crude Palm Oil Futures (FCPO)
+                </h1>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li><a href="/" class="active">Overview</a></li>
+                    <li><a href="/functionality">Functionality</a></li>
+                    <li><a href="/performance">Performance</a></li>
+                    <li><a href="/free-trial">Free Trial</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-area">
+                <h2 class="hero-title">
+                    NSawit Swing: Your Technical Analysis Edge in Volatile
+                    Markets
+                </h2>
+
+                <p class="content-text">
+                    Unlike typical indicators, Nsawit Swing is meticulously
+                    engineered to help you analyze the unpredictable nature of
+                    the market, particularly the FCPO market, where volatility
+                    is the norm. This educational tool isn't just about tracking
+                    trends; it's about identifying critical market patterns and
+                    potential reversal zones that enhance your technical
+                    analysis. Nsawit Swing provides traders with advanced
+                    analytical insights through its cutting-edge algorithm,
+                    designed to perform in challenging market conditions.
+                </p>
+
+                <p class="content-text">
+                    What sets Nsawit Swing apart from traditional indicators
+                    like MACD or Moving Averages is its foundation in a highly
+                    sophisticated pattern-recognition algorithm. This algorithm
+                    is the result of extensive research and development, focused
+                    on detecting subtle market clues and patterns that may
+                    indicate potential trend changes. The precision of Nsawit
+                    Swing's analytical output provides traders with enhanced
+                    market perspective to support their own independent trading
+                    decisions.
+                </p>
+
+                <div class="warning-box">
+                    <p class="warning-text">
+                        Important: Nsawit Swing does not provide buy or sell
+                        recommendations. It is a technical analysis tool that
+                        identifies market reversal patterns. All trading
+                        decisions remain entirely the responsibility of the
+                        user.
+                    </p>
+                </div>
+
+                <p class="content-text">
+                    Nsawit Swing is more than just a tool; it's a strategic
+                    analytical asset for traders who understand that success in
+                    volatile markets requires comprehensive market analysis and
+                    independent decision-making. It offers a unique approach
+                    that combines advanced technology with technical market
+                    insights, providing traders with deeper market understanding
+                    to make their own informed decisions. With Nsawit Swing,
+                    you're equipped with sophisticated analysis capabilities—but
+                    you make all trading decisions based on your own judgment,
+                    risk tolerance, and strategy.
+                </p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="/about">About</a> |
+                <a href="/privacy">Privacy Policy</a> |
+                <a href="/sitemap">Sitemap</a>
+            </div>
+            <p>&copy; 2024 NSawit. All rights reserved.</p>
+        </footer>
+
+        <script>
+            // Affiliate tracking system
+            function getRefCode() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get("ref");
+            }
+
+            function storeRefCode(ref) {
+                if (ref) {
+                    sessionStorage.setItem("affiliateRef", ref);
+                }
+            }
+
+            // Initialize on page load
+            const refCode = getRefCode();
+            if (refCode) {
+                storeRefCode(refCode);
+
+                // Show referral badge
+                const badge = document.getElementById("referralBadge");
+                const refName = document.getElementById("referralName");
+                badge.classList.add("show");
+                refName.textContent = refCode.toUpperCase();
+            }
+        </script>
+    </body>
 </html>
